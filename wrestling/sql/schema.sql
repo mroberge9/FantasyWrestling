@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON
+
 CREATE TABLE wrestlers(
     name VARCHAR(40) NOT NULL,
     wins INTEGER NOT NULL,

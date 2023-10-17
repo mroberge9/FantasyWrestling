@@ -1,0 +1,10 @@
+#!/bin/bash
+# wrestling run
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+set -x
+
+# Run
+flask --app wrestling --debug run --host 0.0.0.0 --port 8000

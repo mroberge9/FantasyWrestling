@@ -1,0 +1,5 @@
+# Fantasy Wrestling ignore
+*.db
+var/
+env/
+__pycache__
