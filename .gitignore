@@ -3,3 +3,7 @@
 var/
 env/
 __pycache__
+node_modules/
+session.json
+bundle.js
+*.js.map

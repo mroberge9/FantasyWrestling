@@ -20,3 +20,5 @@ app.config.from_object('wrestling.config')
 # going to tell pylint and pycodestyle to ignore this coding style violation.
 import wrestling.api
 import wrestling.model
+import wrestling.templates
+import wrestling.views
