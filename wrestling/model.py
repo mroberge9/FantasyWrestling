@@ -21,7 +21,7 @@ def get_db():
     """
     if 'sqlite_db' not in flask.g:
         db_filename = wrestling.app.config['DATABASE_FILENAME']
-        print("DEBUG", db_filename)
+        # print("DEBUG", db_filename)
         flask.g.sqlite_db = sqlite3.connect(str(db_filename))
         flask.g.sqlite_db.row_factory = dict_factory
 
@@ -30,3 +30,29 @@ def get_db():
         flask.g.sqlite_db.execute("PRAGMA foreign_keys = ON")
 
     return flask.g.sqlite_db
+
+def get_all_wrestlers():
+    """Get all wrestlers in db."""
+    connection = get_db()
+    cur = connection.execute(
+        "SELECT * FROM wrestlers"
+    )
+    return cur.fetchall()
+
+def get_world_champ():
+    """Get world champ from db."""
+    connection = get_db()
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "WHERE isWorldChamp = True"
+    )
+    return cur.fetchone()
+
+def get_tv_champ():
+    """Get tv champ from db."""
+    connection = get_db()
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "WHERE isTVChamp = True"
+    )
+    return cur.fetchone()

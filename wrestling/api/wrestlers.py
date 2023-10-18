@@ -2,12 +2,26 @@
 import flask
 import wrestling
 
-@wrestling.app.route('/')
+@wrestling.app.route('/api/')
 def display_wrestlers():
     """Display wrestler data"""
-    connection = wrestling.model.get_db()
-    cur = connection.execute(
-        "SELECT * FROM wrestlers"
+    wrestlers = wrestling.model.get_all_wrestlers()
+    return flask.jsonify(
+        {'wrestlers': wrestlers}
     )
-    print("DEBUG", cur.fetchall())
-    return "<p>Hello</p>"
+
+@wrestling.app.route('/api/worldchamp/')
+def display_worldchamp():
+    """Display world champ"""
+    world_champ = wrestling.model.get_world_champ()
+    return flask.jsonify(
+        {'world_champ': world_champ}
+    )
+
+@wrestling.app.route('/api/tvchamp/')
+def display_tvchamp():
+    """Display tv champ"""
+    tv_champ = wrestling.model.get_tv_champ()
+    return flask.jsonify(
+        {'tv_champ': tv_champ}
+    )
