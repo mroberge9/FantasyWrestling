@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON
+PRAGMA foreign_keys = ON;
 
 INSERT INTO wrestlers(name, wins, losses, isWorldChamp, isTVChamp, numWorldTitles, numTVTitles)
 VALUES

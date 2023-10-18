@@ -10,4 +10,4 @@ APPLICATION_ROOT = '/'
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 # Database file is var/insta485.sqlite3
-DATABASE_FILENAME = ROOT/'var'/'wrestling.sqlite3'
+DATABASE_FILENAME = ROOT/'wrestling'/'var'/'wrestling.sqlite3'
