@@ -56,3 +56,13 @@ def get_tv_champ():
         "WHERE isTVChamp = True"
     )
     return cur.fetchone()
+
+def get_wrestler(name):
+    """Get specific wrestler."""
+    connection = get_db()
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "WHERE name = ?",
+        (name, )
+    )
+    return cur.fetchone()

@@ -25,3 +25,11 @@ def display_tvchamp():
     return flask.jsonify(
         {'tv_champ': tv_champ}
     )
+
+@wrestling.app.route('/api/<string:name>')
+def show_wrestler(name):
+    """Display specific wrestler"""
+    wrestler = wrestling.model.get_wrestler(name)
+    return flask.jsonify(
+        {'wrestler': wrestler}
+    )
