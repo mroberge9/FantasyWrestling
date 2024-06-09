@@ -1,7 +1,7 @@
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE wrestlers(
-    name VARCHAR(40) NOT NULL,
+    name VARCHAR(40) NOT NULL PRIMARY KEY,
     wins INTEGER NOT NULL,
     losses INTEGER NOT NULL,
     isWorldChamp BOOL NOT NULL,

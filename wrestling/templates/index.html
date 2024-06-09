@@ -10,6 +10,21 @@
         </div>
         <!-- Load JavaScript -->
         <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
-        <div id="matchup"></div>
+        <div id="matchup">
+            <h3 id="title">Please Select a Match Type</h3>
+            <form id="matchform" action="/singles/">
+                <select name="wrestler1" id="wrestler1">
+
+                </select>
+                <h4>vs</h4>
+                <select name="wrestler2" id="wrestler2">
+
+                </select>
+                <br>
+                <br>
+                <br>
+                <input type="submit" name="Submit">
+            </form>
+        </div>
     </body>
 </html>
