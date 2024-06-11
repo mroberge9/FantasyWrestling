@@ -31,6 +31,19 @@ def get_db():
 
     return flask.g.sqlite_db
 
+@wrestling.app.teardown_appcontext
+def close_db(error):
+    """Close the database at the end of a request.
+
+    Flask docs:
+    https://flask.palletsprojects.com/en/1.0.x/appcontext/#storing-data
+    """
+    assert error or not error  # Needed to avoid superfluous style error
+    sqlite_db = flask.g.pop('sqlite_db', None)
+    if sqlite_db is not None:
+        sqlite_db.commit()
+        sqlite_db.close()
+
 def get_all_wrestlers():
     """Get all wrestlers in db."""
     connection = get_db()
@@ -66,3 +79,83 @@ def get_wrestler(name):
         (name, )
     )
     return cur.fetchone()
+
+def update_wins(name):
+    """Add 1 win to wrestler"""
+    connection = get_db()
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET wins = wins + 1 "
+        "WHERE name = ?",
+        (name, )
+    )
+
+def update_loss(name):
+    """Add 1 loss to wrestler"""
+    connection = get_db()
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET losses = losses + 1 "
+        "WHERE name = ?",
+        (name, )
+    )
+
+def new_world_champ(old_champ, new_champ):
+    """Set new world champion"""
+    connection = get_db()
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET isWorldChamp = False "
+        "WHERE name = ?",
+        (old_champ, )
+    )
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET isWorldChamp = True, numWorldTitles = numWorldTitles + 1 "
+        "WHERE name = ?",
+        (new_champ, )
+    )
+
+def new_tv_champ(old_champ, new_champ):
+    """Set new tv champion"""
+    connection = get_db()
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET isTVChamp = False "
+        "WHERE name = ?",
+        (old_champ, )
+    )
+    cur = connection.execute(
+        "UPDATE wrestlers "
+        "SET isTVChamp = True, numTVTitles = numTVTitles + 1 "
+        "WHERE name = ?",
+        (new_champ, )
+    )
+
+def singles_match_result(winner, loser):
+    """Create new singles match result"""
+    connection = get_db()
+    cur = connection.execute(
+        "INSERT INTO results(winner, loser, isSingles, isWorld, isTV, newWorldChamp, newTVChamp) "
+        "VALUES (?, ?, True, False, False, False, False)",
+        (winner, loser)
+    )
+
+def world_title_match_result(winner, loser, newWorldChamp):
+    """Create new world title match result"""
+    connection = get_db()
+    cur = connection.execute(
+        "INSERT INTO results(winner, loser, isSingles, isWorld, isTV, newWorldChamp, newTVChamp) "
+        "VALUES (?, ?, False, True, False, ?, False)",
+        (winner, loser, newWorldChamp)
+    )
+
+def tv_title_match_result(winner, loser, newTVChamp):
+    """Create new tv title match result"""
+    connection = get_db()
+    cur = connection.execute(
+        "INSERT INTO results(winner, loser, isSingles, isWorld, isTV, newWorldChamp, newTVChamp) "
+        "VALUES (?, ?, False, False, True, False, ?)",
+        (winner, loser, newTVChamp)
+    )
+    

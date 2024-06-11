@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    color: red;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h3,h4 {
+    text-align: center;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
+#reactEntry {
+    text-align: center;
+}
+
+#matchup {
+    text-align: center;
+}
+
+#result_list{
+    text-align: center;
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    list-style: none;
+}
+
+/* body {
+    background-color: black;
+} */

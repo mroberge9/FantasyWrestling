@@ -16,6 +16,8 @@ async function handleSinglesMatch(url) {
     // let dropdown1 = document.createElement('select');
     // dropdown1.setAttribute('name', 'wrestler1');
     // dropdown1.setAttribute('id', 'wrestler1');
+    let matchform = document.getElementById('matchform');
+    matchform.setAttribute('action', '/singles/')
     let api_data = {};
     try {
         const response = await fetch(url);
@@ -79,6 +81,8 @@ async function handleWorldTitleMatch(wrestlersUrl, worldTitleUrl) {
     // let dropdown1 = document.createElement('select');
     // dropdown1.setAttribute('name', 'wrestler1');
     // dropdown1.setAttribute('id', 'wrestler1');
+    let matchform = document.getElementById('matchform');
+    matchform.setAttribute('action', '/worldtitle/')
     let api_data = {};
     try {
         const response = await fetch(worldTitleUrl);
@@ -171,6 +175,8 @@ async function handleTVTitleMatch(wrestlersUrl, tvTitleUrl) {
     // let dropdown1 = document.createElement('select');
     // dropdown1.setAttribute('name', 'wrestler1');
     // dropdown1.setAttribute('id', 'wrestler1');
+    let matchform = document.getElementById('matchform');
+    matchform.setAttribute('action', '/tvtitle/')
     let api_data = {};
     try {
         const response = await fetch(tvTitleUrl);
