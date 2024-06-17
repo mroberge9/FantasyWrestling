@@ -76,11 +76,15 @@ def world_title_match():
     print(wrestler2)
     winner = match_algorithm(wrestler1, wrestler2)
     if winner == 1:
-        print("Winner:", wrestler1['name'])
         wrestling.model.update_wins(wrestler1['name'])
         wrestling.model.update_loss(wrestler2['name'])
-        wrestling.model.world_title_match_result(wrestler1['name'], wrestler2['name'], False)
-
+        if wrestler1['isWorldChamp']:
+            print("Winner:", wrestler1['name'])
+            wrestling.model.world_title_match_result(wrestler1['name'], wrestler2['name'], False)
+        else:
+            print("Winner:", wrestler1['name'], 'NEW WORLD CHAMPION')
+            wrestling.model.new_world_champ(wrestler2['name'], wrestler1['name'])
+            wrestling.model.world_title_match_result(wrestler1['name'], wrestler2['name'], True)
     else:
         print("Winner:", wrestler2['name'], "NEW WORLD CHAMPION")
         wrestling.model.update_wins(wrestler2['name'])
@@ -101,10 +105,15 @@ def tv_title_match():
     print(wrestler2)
     winner = match_algorithm(wrestler1, wrestler2)
     if winner == 1:
-        print("Winner:", wrestler1['name'])
         wrestling.model.update_wins(wrestler1['name'])
         wrestling.model.update_loss(wrestler2['name'])
-        wrestling.model.tv_title_match_result(wrestler1['name'], wrestler2['name'], False)
+        if wrestler1['isTVChamp']:
+            print("Winner:", wrestler1['name'])
+            wrestling.model.tv_title_match_result(wrestler1['name'], wrestler2['name'], False)
+        else:
+            print("Winner:", wrestler1['name'], 'NEW TV CHAMPION')
+            wrestling.model.new_tv_champ(wrestler2['name'], wrestler1['name'])
+            wrestling.model.tv_title_match_result(wrestler1['name'], wrestler2['name'], True)
     else:
         print("Winner:", wrestler2['name'], "NEW TV CHAMPION")
         wrestling.model.update_wins(wrestler2['name'])
@@ -159,3 +168,7 @@ def match_algorithm(wrestler1, wrestler2):
     rand_num = random.randint(0, 999)
     return odds_array[rand_num]
     
+@wrestling.app.route("/clearResults/", methods=["POST"])
+def clear_results():
+    wrestling.model.clear_results()
+    return flask.jsonify({})

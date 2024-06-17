@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}"/>
     </head>
     <body>
+        Created by: Michael Roberge
         <h1>Welcome to Fantasy Wrestling!</h1>
         <div id="reactEntry">
             Loading...
@@ -29,6 +30,9 @@
         </div>
         <div id="results">
             <h3 id="result_header">Results:</h3>
+            <div id="clear_results">
+                <button id="clear_results_button">Clear Results</button>
+            </div>
             <ul id="result_list">
                 {% for result in results %}
                     {% if result.isSingles == True %}
@@ -58,6 +62,34 @@
                             </li>
                         {% endif %}
                     {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="roster">
+            <h3 id="roster_header">Roster:</h3>
+            <ul id="roster_list">
+                {% if world_champ == None %}
+                    <li>World Champion: Vacant</li>
+                {% else %}
+                    <li>World Champion: {{ world_champ.name }}   {{ world_champ.wins }}-{{ world_champ.losses }}  <br>
+                        {{world_champ.numWorldTitles}}x World Champion <br>  {{world_champ.numTVTitles}}x TV Champion</li>
+                {% endif %}
+                <br>
+                {% if tv_champ == None %}
+                    <li>TV Champion: Vacant</li>
+                {% else %}
+                    <li>TV Champion: {{ tv_champ.name }}   {{ tv_champ.wins }}-{{ tv_champ.losses }}  <br>
+                        {{tv_champ.numWorldTitles}}x World Champion <br>  {{tv_champ.numTVTitles}}x TV Champion</li>
+                {% endif %}
+
+                    _____________________________________
+                <br>
+                <br>
+                
+                {% for wrestler in roster %}
+                    <li>{{ wrestler.name }}   {{ wrestler.wins }}-{{ wrestler.losses }}  <br>
+                    {{wrestler.numWorldTitles}}x World Champion <br>  {{wrestler.numTVTitles}}x TV Champion</li>
+                    <br>
                 {% endfor %}
             </ul>
         </div>

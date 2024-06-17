@@ -57,5 +57,24 @@ def show_index():
         "ORDER BY matchid DESC"
     )
     results = cur.fetchall()
-    context = {"results": results}
+
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "WHERE isWorldChamp = True"
+    )
+    world_champ = cur.fetchone()
+
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "WHERE isTVChamp = True"
+    )
+    tv_champ = cur.fetchone()
+
+    cur = connection.execute(
+        "SELECT * FROM wrestlers "
+        "ORDER BY name ASC"
+    )
+    roster = cur.fetchall()
+
+    context = {"results": results, "world_champ": world_champ, "tv_champ": tv_champ, "roster": roster}
     return flask.render_template("index.html", **context)

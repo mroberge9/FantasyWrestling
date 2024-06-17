@@ -19,6 +19,39 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', validateForm);
 });
 
+async function clearResults(event) {
+    console.log("cleared");
+    try {
+        const response = await fetch("/clearResults/", {
+            method: "POST",
+            body: JSON.stringify({
+              title: "Clear Match Results",
+              completed: false
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        console.log('Response:', result);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    let result_list = document.getElementById('result_list');
+    while(result_list.firstChild) {
+        result_list.removeChild(result_list.firstChild);
+    }
+    
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('clear_results_button');
+    button.addEventListener('click', clearResults);
+});
+
 root.render(
     <Menu />
 );

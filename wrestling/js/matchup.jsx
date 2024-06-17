@@ -6,7 +6,12 @@ import { forEachChild } from "typescript";
 function SinglesMatch() {
     console.log("singles match started");
 
-}
+};
+
+// document.getElementById('clear_results_button').onclick = function() {clearResults()};
+
+
+
 
 async function handleSinglesMatch(url) {
     console.log('handleSingles');
@@ -188,16 +193,41 @@ async function handleTVTitleMatch(wrestlersUrl, tvTitleUrl) {
         console.log('Response:', result);
       } catch (error) {
         console.error('Error:', error);
-      }
-    let tv_champ = api_data["tv_champ"];
+    }
+
     let wrestler1Element = document.getElementById('wrestler1');
     while(wrestler1Element.firstChild) {
-        wrestler1Element.removeChild(wrestler1Element.firstChild);
+          wrestler1Element.removeChild(wrestler1Element.firstChild);
     }
-    let option = document.createElement('option');
-    option.setAttribute('value', tv_champ['name']);
-    option.innerHTML = tv_champ['name'];
-    wrestler1Element.appendChild(option);
+    
+    let tv_champ = api_data["tv_champ"];
+    if (tv_champ === null) {
+      console.log("no tv champ");
+      try {
+          const response = await fetch(wrestlersUrl);
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const result = await response.json();
+          api_data = result;
+          console.log('Response:', result);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      let wrestlersArray = api_data["wrestlers"];
+      wrestlersArray.forEach(wrestler => {
+          let option = document.createElement('option');
+          option.setAttribute('value', wrestler['name']);
+          option.innerHTML = wrestler['name'];
+          wrestler1Element.appendChild(option);
+      });
+    }
+    else {
+        let option = document.createElement('option');
+        option.setAttribute('value', tv_champ['name']);
+        option.innerHTML = tv_champ['name'];
+        wrestler1Element.appendChild(option);
+    }
     // matchupElement.appendChild(dropdown1);
     
     // let vs = document.createElement('h4');
@@ -225,9 +255,11 @@ async function handleTVTitleMatch(wrestlersUrl, tvTitleUrl) {
         wrestler2Element.removeChild(wrestler2Element.firstChild);
     }
     wrestlersArray.forEach(wrestler => {
+      if (tv_champ !== null) {
         if (wrestler['name'] === tv_champ['name']) {
             return;
         }
+    }
         let option = document.createElement('option');
         option.setAttribute('value', wrestler['name']);
         option.innerHTML = wrestler['name'];

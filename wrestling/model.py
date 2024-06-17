@@ -48,7 +48,8 @@ def get_all_wrestlers():
     """Get all wrestlers in db."""
     connection = get_db()
     cur = connection.execute(
-        "SELECT * FROM wrestlers"
+        "SELECT * FROM wrestlers "
+        "ORDER BY name ASC"
     )
     return cur.fetchall()
 
@@ -157,5 +158,12 @@ def tv_title_match_result(winner, loser, newTVChamp):
         "INSERT INTO results(winner, loser, isSingles, isWorld, isTV, newWorldChamp, newTVChamp) "
         "VALUES (?, ?, False, False, True, False, ?)",
         (winner, loser, newTVChamp)
+    )
+
+def clear_results():
+    """Delete results from table"""
+    connection = get_db()
+    cur = connection.execute(
+        "DELETE FROM results "
     )
     

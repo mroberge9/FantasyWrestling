@@ -19,11 +19,31 @@ h3,h4 {
     text-align: center;
 }
 
+#results {
+    text-align: center;
+}
+
 #result_list{
     text-align: center;
     color: black;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     list-style: none;
+}
+
+#clear_results{
+    text-align: center;
+}
+
+#roster{
+    text-align: left;
+    position: relative;
+    bottom: 380px;
+    width: fit-content;
+
+}
+
+#roster_header{
+    text-align: left;
 }
 
 /* body {
