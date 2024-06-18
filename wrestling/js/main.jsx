@@ -13,10 +13,29 @@ function validateForm(event) {
         event.preventDefault(); // Prevent the form from submitting
     }
   };
+
+function validateNewWrestler(event) {
+    const newWrestler = document.getElementById('new_wrestler').value;
+
+    const rosterList = document.getElementById('roster_list').getElementsByTagName('li');
+    let rosterListArr = Array.from(rosterList)
+    rosterListArr.forEach(child => {
+        let name = child.getAttribute('name');
+        if (name === newWrestler) {
+            alert(newWrestler + ' already exists.');
+            event.preventDefault();
+        }
+    });
+}
   
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('matchform');
     form.addEventListener('submit', validateForm);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('new_wrestler_form');
+    form.addEventListener('submit', validateNewWrestler);
 });
 
 async function clearResults(event) {

@@ -81,6 +81,15 @@ def get_wrestler(name):
     )
     return cur.fetchone()
 
+def delete_wrestler(name):
+    """Delete specific wrestler."""
+    connection = get_db()
+    cur = connection.execute(
+        "DELETE FROM wrestlers "
+        "WHERE name = ?",
+        (name, )
+    )
+
 def update_wins(name):
     """Add 1 win to wrestler"""
     connection = get_db()
@@ -165,6 +174,13 @@ def clear_results():
     connection = get_db()
     cur = connection.execute(
         "DELETE FROM results "
+    )
+
+def clear_roster():
+    """Delete wrestlers from table"""
+    connection = get_db()
+    cur = connection.execute(
+        "DELETE FROM wrestlers "
     )
 
 def add_new_wrestler(name):

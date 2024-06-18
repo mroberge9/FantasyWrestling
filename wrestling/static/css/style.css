@@ -46,6 +46,16 @@ h3,h4 {
     text-align: left;
 }
 
+#new_game_form{
+    position:absolute;
+    left: 94%;
+    bottom: 96%;
+}
+
+b, strong{
+    font-size: large;
+}
+
 /* body {
     background-color: black;
 } */

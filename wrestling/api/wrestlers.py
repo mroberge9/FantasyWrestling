@@ -180,3 +180,15 @@ def match_algorithm(wrestler1, wrestler2):
 def clear_results():
     wrestling.model.clear_results()
     return flask.jsonify({})
+
+@wrestling.app.route("/new_game/", methods=["POST"])
+def new_game():
+    wrestling.model.clear_results()
+    wrestling.model.clear_roster()
+    return flask.redirect(flask.request.referrer)
+
+@wrestling.app.route("/delete_wrestler/", methods=["POST"])
+def delete_wrestler():
+    deleted_wrestler = flask.request.form['delete_wrestler_button']
+    wrestling.model.delete_wrestler(deleted_wrestler)
+    return flask.redirect(flask.request.referrer)

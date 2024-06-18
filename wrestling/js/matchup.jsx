@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes, { object } from "prop-types";
-import { forEachChild } from "typescript";
 
 
 function SinglesMatch() {
