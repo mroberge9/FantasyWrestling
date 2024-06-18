@@ -2,6 +2,10 @@ h1 {
     text-align: center;
     color: red;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    position: relative;
+    bottom: 50px;
+    margin-bottom: -25px;
 }
 
 h3,h4 {
@@ -56,6 +60,14 @@ b, strong{
     font-size: large;
 }
 
-/* body {
-    background-color: black;
-} */
+#instructions{
+    position: absolute;
+    top: 10%;
+    left: 68%;
+    text-align: left;
+    width: fit-content;
+}
+
+body {
+    background-color: beige;
+}

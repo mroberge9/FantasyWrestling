@@ -9,7 +9,7 @@
         <form id="new_game_form" action="/new_game/" method="post" onclick="return confirm('Are you sure you want to start over? All progress will be lost.') ">
             <button id="new_game">New Game</button>
         </form>
-        <h1>Welcome to Fantasy Wrestling!</h1>
+        <h1>Fantasy Wrestling</h1>
         <div id="reactEntry">
             Loading...
         </div>
@@ -105,6 +105,24 @@
                     <br>
                 {% endfor %}
             </ul>
+        </div>
+        <div id="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Add wrestlers to the roster.</li>
+                <li>Choose a match type and 2 wrestlers to compete.</li>
+                <li>Press Submit.</li>
+            </ol>
+        <div id="details">
+            <h3>Details:</h3>
+            <ul>
+                <li>Winners are decided randomly.</li>
+                <li>Wrestlers with a higher win percentage and championship factor have better odds</li>
+                <li>Championship Factor: World Titles carry more weight than TV Titles.<br>
+                    Championship Factor = (Number of World Titles x 10 ) + (Number of TV Titles x 5)
+                </li>
+            </ul>
+        </div>
         </div>
     </body>
 </html>
