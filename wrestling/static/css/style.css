@@ -36,8 +36,8 @@ h3,h4 {
 
 #roster{
     text-align: left;
-    position: relative;
-    bottom: 380px;
+    position: absolute;
+    top: 90px;
     width: fit-content;
 
 }

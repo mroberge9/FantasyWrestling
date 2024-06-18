@@ -125,6 +125,14 @@ def tv_title_match():
     
     return flask.redirect(flask.request.referrer)
 
+@wrestling.app.route('/add_wrestler/', methods=["POST"])
+def add_wrestler():
+    """Add new wrestler to roster"""
+    new_wrestler = flask.request.form['new_wrestler']
+    wrestling.model.add_new_wrestler(new_wrestler)
+
+    return flask.redirect(flask.request.referrer)
+
 
     
 def match_algorithm(wrestler1, wrestler2):

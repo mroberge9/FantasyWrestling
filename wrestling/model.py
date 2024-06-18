@@ -166,4 +166,13 @@ def clear_results():
     cur = connection.execute(
         "DELETE FROM results "
     )
+
+def add_new_wrestler(name):
+    """Add new wrestler to db"""
+    connection = get_db()
+    cur = connection.execute(
+        "INSERT INTO wrestlers(name, wins, losses, isWorldChamp, isTVChamp, numWorldTitles, numTVTitles) "
+        "VALUES (?, 0, 0, False, False, 0, 0)",
+        (name, )
+    )
     

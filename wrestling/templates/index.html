@@ -67,6 +67,10 @@
         </div>
         <div id="roster">
             <h3 id="roster_header">Roster:</h3>
+            <form action="/add_wrestler/" method="post">
+                <input id="new_wrestler" type="text" name="new_wrestler">
+                <input type="submit" value="Add Wrestler">
+            </form>
             <ul id="roster_list">
                 {% if world_champ == None %}
                     <li>World Champion: Vacant</li>
