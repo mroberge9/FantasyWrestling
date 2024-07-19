@@ -148,6 +148,7 @@ def match_algorithm(wrestler1, wrestler2):
     wp_diff = round((abs(w1_wp - w2_wp))/2, 1)
     w1_odds = 50.0
     w2_odds = 50.0
+    print(w1_odds, w2_odds)
     if w1_wp > w2_wp:
         w1_odds += wp_diff
         w2_odds -= wp_diff
@@ -156,6 +157,7 @@ def match_algorithm(wrestler1, wrestler2):
         w2_odds += wp_diff
     w1_odds = round(w1_odds, 1)
     w2_odds = round(w2_odds, 1)
+    print(w1_odds, w2_odds)
     w1_champ_factor = (wrestler1['numWorldTitles'] * 10) + (wrestler1['numTVTitles'] * 5)
     w2_champ_factor = (wrestler2['numWorldTitles'] * 10) + (wrestler2['numTVTitles'] * 5)
     champ_factor_diff = abs(w1_champ_factor - w2_champ_factor) / 2
@@ -167,13 +169,16 @@ def match_algorithm(wrestler1, wrestler2):
         w2_odds += champ_factor_diff
     w1_odds = int(w1_odds * 10)
     w2_odds = int(w2_odds * 10)
+    print(w1_odds, w2_odds)
     odds_array = []
     for x in range(0, w1_odds):
         odds_array.append(1)
     for x in range(w1_odds, w1_odds + w2_odds):
         odds_array.append(2)
+    print(odds_array)
     random.shuffle(odds_array)
     rand_num = random.randint(0, 999)
+    print(odds_array[rand_num])
     return odds_array[rand_num]
     
 @wrestling.app.route("/clearResults/", methods=["POST"])

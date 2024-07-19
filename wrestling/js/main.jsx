@@ -27,6 +27,10 @@ function validateNewWrestler(event) {
         }
     });
 }
+
+// function instructionPopup(event) {
+//   let popup = 
+// }
   
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('matchform');
@@ -37,6 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('new_wrestler_form');
     form.addEventListener('submit', validateNewWrestler);
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const popup = document.getElementById('instruction_popup_text');
+//   popup.addEventListener('click', instructionPopup);
+// });
 
 async function clearResults(event) {
     console.log("cleared");

@@ -6,6 +6,8 @@ h1 {
     position: relative;
     bottom: 50px;
     margin-bottom: -25px;
+    width: fit-content;
+    left: 37.4%;
 }
 
 h3,h4 {
@@ -52,15 +54,15 @@ h3,h4 {
 
 #new_game_form{
     position:absolute;
-    left: 94%;
-    bottom: 96%;
+    left: 1%;
+    top: 8%;
 }
 
 b, strong{
     font-size: large;
 }
 
-#instructions{
+#instructions {
     position: absolute;
     top: 10%;
     left: 68%;
@@ -71,3 +73,166 @@ b, strong{
 body {
     background-color: beige;
 }
+
+/* #instructions_hidden {
+    position: absolute;
+    top: 10%;
+    left: 68%;
+    text-align: left;
+    width: fit-content;
+    display: none;
+}
+
+#instructions:hover + #instructions_hidden {
+    display: block;
+} */
+
+.instruction_popup {
+    position: absolute;
+    left: 80%;
+    top: 1.25%;
+}
+
+.instruction_text {
+    visibility: hidden;
+    opacity: 0;
+    transition: 
+        visibility 0s, opacity 0.5s ease;
+}
+
+.instruction_popup:hover .instruction_text {
+    visibility: visible;
+    opacity: 1;
+    font-size: 12pt;
+    width: 350px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -175px
+}
+
+.instruction_popup .instruction_text::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #555 transparent ;
+  }
+
+.details_popup {
+    position: absolute;
+    left: 85%;
+    top: 1%;
+}
+
+.details_text {
+    visibility: hidden;
+    opacity: 0;
+    transition: 
+        visibility 0s, opacity 0.5s ease;
+}
+
+.details_popup:hover .details_text {
+    visibility: visible;
+    opacity: 1;
+    font-size: 12pt;
+    width: 400px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -200px;
+}
+
+.details_popup .details_text::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #555 transparent ;
+  }
+
+
+  
+  /* The actual popup (appears on top) */
+  /* .instruction_popup:hover + .instruction_text {
+    font-size: 12pt;
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -80px;
+  } */
+  
+  /* Popup arrow */
+
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup)
+  .instruction_popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn  7s;
+    animation: fadeIn 7s;
+  } */
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    0% {
+        opacity:0;
+      }
+      33% {
+        opacity:1;
+      }
+      66% {
+        opacity:1;
+      }
+      100% {
+        opacity:0;
+      }
+    }
+  
+  @keyframes fadeIn {
+    0% {
+        opacity:0;
+      }
+      33% {
+        opacity:1;
+      }
+      66% {
+        opacity:1;
+      }
+      100% {
+        opacity:0;
+      }
+    }
+
+  /* @-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  } */

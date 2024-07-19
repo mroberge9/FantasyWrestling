@@ -15,6 +15,7 @@
         </div>
         <!-- Load JavaScript -->
         <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+        <script src="https://kit.fontawesome.com/4714cf3aeb.js" crossorigin="anonymous"></script>
         <div id="matchup">
             <h3 id="title">Please Select a Match Type</h3>
             <form id="matchform" action="/singles/" method="post">
@@ -106,22 +107,28 @@
                 {% endfor %}
             </ul>
         </div>
-        <div id="instructions">
-            <h3>Instructions:</h3>
-            <ol>
-                <li>Add wrestlers to the roster.</li>
-                <li>Choose a match type and 2 wrestlers to compete.</li>
-                <li>Press Submit.</li>
-            </ol>
-        <div id="details">
-            <h3>Details:</h3>
-            <ul>
-                <li>Winners are decided randomly.</li>
-                <li>Wrestlers with a higher win percentage and championship factor have better odds</li>
-                <li>Championship Factor: World Titles carry more weight than TV Titles.<br>
+        <div class="instruction_popup">
+            <i class="fa-solid fa-question"></i>
+            <div class="instruction_text" id="instruction_popup_text">
+                <ol>
+                    <li>Add wrestlers to the roster.</li>
+                    <li>Choose a match type and 2 wrestlers to compete.</li>
+                    <li>Press Submit.</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="details_popup">
+            <i class="fa-solid fa-info"></i>
+            <div class="details_text">
+                <ul>
+                    <li>Winners are decided randomly.</li>
+                    <li>Wrestlers with a higher win percentage and championship factor have better odds</li>
+                    <li>Championship Factor: World Titles carry more weight than TV Titles.<br>
                     Championship Factor = (Number of World Titles x 10 ) + (Number of TV Titles x 5)
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
         </div>
     </body>
