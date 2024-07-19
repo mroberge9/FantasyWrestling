@@ -7,7 +7,6 @@ node_modules/
 session.json
 bundle.js
 *.js.map
-requirements.txt
 .ebextensions
 .ebignore
 *.zip
